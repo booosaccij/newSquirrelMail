@@ -964,10 +964,9 @@ function sqimap_get_small_header_list($imap_stream, $msg_list, $show_num=false) 
             }
             $messages[$msgi]['FROM-SORT'] = $from;
             $subject_sort = strtolower(decodeHeader($subject, true, false));
-            $boolean = searchAlternativeRegularPattern($subject_sort);
-            if ($boolean){
-                preg_match("/^(?:(?:vedr|sv|re|aw|fw|fwd|\[\w\]):\s*)*\s*(.*)$/si", $subject_sort, $matches);
-                $messages[$msgi]['SUBJECT-SORT'] = $matches[1];
+            $result = searchAlternativeRegularPattern($subject_sort);
+            if ($result !== false){
+                $messages[$msgi]['SUBJECT-SORT'] = $result;
             } else {
                 $messages[$msgi]['SUBJECT-SORT'] = $subject_sort;
             }
@@ -994,7 +993,7 @@ function searchAlternativeRegularPattern($subject) {
     $nameSearch = array("vedr","sv","re","aw","fw","fwd");
     foreach($nameSearch as $name){
         if(strstr($subject,$name)){
-                return true;
+                return $name;
         }
     }
     return false;
