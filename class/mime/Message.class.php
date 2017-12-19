@@ -522,7 +522,7 @@ class Message {
      * @param integer $i
      * @return array
      */
-    function parseProperties($read = '', $i = 0) {
+    function parseProperties($read = '', $i = 0, $prova = null) {
         //control @param
         if($read === '' or $i === 0){
             return null;
