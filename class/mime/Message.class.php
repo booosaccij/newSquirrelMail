@@ -374,7 +374,7 @@ class Message {
                         case 1:
                             /* multipart properties */
                             ++$i;
-                            $arg_a[] = $msg->parseProperties($read, $i);
+                            $arg_a[] = $msg->parseProperties($read);
                             ++$arg_no;
                             break;
                         case 2:
@@ -522,8 +522,7 @@ class Message {
      * @param integer $i
      * @return array
      */
-    function parseProperties($read, $i, $prova = null) {
-        
+    function parseProperties($read, $i) {
         $properties = array();
         $prop_name = '';
 
@@ -644,10 +643,7 @@ class Message {
      * @return string
      * @todo document me
      */
-    function parseLiteral($read = '', &$i = null) {
-        if($read === ''){
-            return '';
-        }
+    function parseLiteral($read, &$i) {
         $lit_cnt = '';
         ++$i;
         $iPos = strpos($read,'}',$i);
@@ -683,12 +679,7 @@ class Message {
      * @return string string inbetween the double quotes
      * @author Marc Groot Koerkamp
      */
-    function parseQuote($read = '', &$i = null) {
-        //control @param
-        if($read === '' or $i === null){
-            return '';
-        }
-        
+    function parseQuote($read, &$i) {
         $s = '';
         $iPos = ++$i;
         $iPosStart = $iPos;
@@ -780,10 +771,7 @@ class Message {
      * @param integer $i
      * @param object Disposition object or empty string
      */
-    function parseDisposition($read = '', &$i = null) {
-        if($read === '' or $i === null){
-            return false;
-        }
+    function parseDisposition($read, &$i) {
         $arg_a = array();
         for (; $read{$i} != ')'; ++$i) {
             switch ($read{$i}) {
