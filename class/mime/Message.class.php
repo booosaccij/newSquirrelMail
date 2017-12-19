@@ -522,7 +522,12 @@ class Message {
      * @param integer $i
      * @return array
      */
-    function parseProperties($read, $i) {
+    function parseProperties($read = '', $i = 0) {
+        //control @param
+        if($read === '' or $i === 0){
+            return null;
+        }
+        
         $properties = array();
         $prop_name = '';
 
@@ -643,7 +648,10 @@ class Message {
      * @return string
      * @todo document me
      */
-    function parseLiteral($read, &$i) {
+    function parseLiteral($read = '', &$i = null) {
+        if($read === ''){
+            return '';
+        }
         $lit_cnt = '';
         ++$i;
         $iPos = strpos($read,'}',$i);
@@ -679,7 +687,12 @@ class Message {
      * @return string string inbetween the double quotes
      * @author Marc Groot Koerkamp
      */
-    function parseQuote($read, &$i) {
+    function parseQuote($read = '', &$i = null) {
+        //control @param
+        if($read === '' or $i === null){
+            return '';
+        }
+        
         $s = '';
         $iPos = ++$i;
         $iPosStart = $iPos;
@@ -771,7 +784,10 @@ class Message {
      * @param integer $i
      * @param object Disposition object or empty string
      */
-    function parseDisposition($read, &$i) {
+    function parseDisposition($read = '', &$i = null) {
+        if($read === '' or $i === null){
+            return false;
+        }
         $arg_a = array();
         for (; $read{$i} != ')'; ++$i) {
             switch ($read{$i}) {

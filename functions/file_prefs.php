@@ -270,7 +270,7 @@ function getSig($data_dir, $username, $number) {
     if (file_exists($filename)) {
         /* Open the file, or else display an error to the user. */
         error_reporting(0);
-        if(!$file = fopen($filename, 'r'))
+        if(!$file = fopen(realpath(htmlspecialchars($filename)), 'r'))
         {
             logout_error( sprintf( _("Signature file, %s, could not be opened. Contact your system administrator to resolve this issue."), htmlspecialchars($filename)) );
             exit;
