@@ -139,7 +139,7 @@ class abook_local_file extends addressbook_backend {
             $this->set_error('Invalid argument to constructor');
         }
         }
-        catch (Exception $e) {
+        catch (MyException $e) {
             echo "Exception ".": ".$e->getMessage();
         }
     /**

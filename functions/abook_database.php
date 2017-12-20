@@ -135,7 +135,7 @@ class abook_database extends addressbook_backend {
         }
         }
     
-        catch (Exception $e) {
+        catch (MyException $e) {
             echo "Exception ".": ".$e->getMessage();
         }
 
