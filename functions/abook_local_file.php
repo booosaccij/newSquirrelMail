@@ -1,5 +1,5 @@
 <?php
-
+(require_once SM_PATH . 'class/MyException.php');
 /**
  * abook_local_file.php
  *
@@ -104,10 +104,10 @@ class abook_local_file extends addressbook_backend {
         try{
         if(is_array($param)) {
             if(empty($param['filename'])) {
-                throw new Exception('Invalid parameters');
+                throw new MyException('Invalid parameters');
             }
             if(!is_string($param['filename'])) {
-                throw new Exception('Not a file name');
+                throw new MyException('Not a file name');
             }
 
             $this->filename = $param['filename'];

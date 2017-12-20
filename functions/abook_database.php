@@ -1,7 +1,6 @@
 <?php
 
-
-
+(require_once SM_PATH . 'class/MyException.php');
 /**
  * abook_database.php
  *
@@ -110,7 +109,7 @@ class abook_database extends addressbook_backend {
             if (empty($param['dsn']) ||
                 empty($param['table']) ||
                 empty($param['owner'])) {
-                throw new Exception("Parameter cannot be null");
+                throw new MyException("Parameter cannot be null");
             }
 
             $this->dsn   = $param['dsn'];
@@ -132,7 +131,7 @@ class abook_database extends addressbook_backend {
             $this->open(true);
         }
         else {
-            throw new Exception('Invalid argument to constructor');
+            throw new MyException('Invalid argument to constructor');
         }
         }
     
