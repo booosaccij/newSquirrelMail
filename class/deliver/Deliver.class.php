@@ -587,7 +587,7 @@ class Deliver {
         $message_id = 'MESSAGE ID GENERATION ERROR! PLEASE CONTACT SQUIRRELMAIL DEVELOPERS';
         if (empty($rfc822_header->message_id)) {
             $message_id = '<'
-                        . md5(GenerateRandomString(16, '', 7) . uniqid(mt_rand(),true))
+                        . password_hash(GenerateRandomString(16, '', 7) . uniqid(mt_rand(),true),PASSWORD_BCRYPT,array('cost' => 13))
                         . '.squirrel@' . $SERVER_NAME .'>';
         }
 
