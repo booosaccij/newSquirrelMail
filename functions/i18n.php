@@ -561,6 +561,7 @@ function is_conversion_safe($input_charset) {
         } else {
             return false;
         }
+        break;
     case "windows-1257":
         if ( $input_charset == "iso-8859-13" ||
              $input_charset == "iso-8859-4" ) {
@@ -568,6 +569,7 @@ function is_conversion_safe($input_charset) {
         } else {
             return false;
         }
+        break;
     case "iso-8859-4":
         if ( $input_charset == "iso-8859-13" ||
              $input_charset == "windows-1257" ) {
@@ -575,6 +577,7 @@ function is_conversion_safe($input_charset) {
         } else {
             return false;
         }
+        break;
     case "iso-8859-5":
         if ( $input_charset == "windows-1251" ||
              $input_charset == "koi8-r" ||
@@ -583,6 +586,7 @@ function is_conversion_safe($input_charset) {
         } else {
             return false;
         }
+        break;
     case "iso-8859-13":
         if ( $input_charset == "iso-8859-4" ||
              $input_charset == "windows-1257" ) {
@@ -590,6 +594,7 @@ function is_conversion_safe($input_charset) {
         } else {
             return false;
         }
+        break;
     case "koi8-r":
         if ( $input_charset == "windows-1251" ||
              $input_charset == "iso-8859-5" ||
@@ -598,6 +603,7 @@ function is_conversion_safe($input_charset) {
         } else {
             return false;
         }
+        break;
     case "koi8-u":
         if ( $input_charset == "windows-1251" ||
              $input_charset == "iso-8859-5" ||
@@ -606,6 +612,7 @@ function is_conversion_safe($input_charset) {
         } else {
             return false;
         }
+        break;
     default:
         return false;
     }

@@ -361,6 +361,7 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
         } elseif ( $search == SQ_SESSION ) {
             break;
         }
+        break;
       case SQ_FORM:   // check post, get
       case SQ_POST:
         if( isset($_POST[$name]) ) {
@@ -369,6 +370,7 @@ function sqgetGlobalVar($name, &$value, $search = SQ_INORDER) {
         } elseif ( $search == SQ_POST ) {
           break;
         }
+        break;
       case SQ_GET:
         if ( isset($_GET[$name]) ) {
             $value = $_GET[$name];

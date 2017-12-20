@@ -257,7 +257,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
                 break;
             }
           } // end case $tag{0}
-
+          break;
           case '*':
           {
             if (preg_match('/^\*\s\d+\sFETCH/',$read)) {
@@ -420,6 +420,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         error_box($string,$color);
         echo '</body></html>';
         exit;
+        break;
     case 'BYE':
         set_up_language($squirrelmail_language);
         (require_once SM_PATH . 'functions/display_messages.php');
@@ -433,6 +434,7 @@ function sqimap_read_data_list ($imap_stream, $tag_uid, $handle_errors,
         error_box($string,$color);
         echo '</body></html>';
         exit;
+        break;
     default:
         set_up_language($squirrelmail_language);
         (require_once SM_PATH . 'functions/display_messages.php');
@@ -856,8 +858,8 @@ function parseAddress($address, $max=0) {
                 $aAddress[] = array($sGroup,$sEmail);
                 $aStack = $aComment = array();
                 $sGroup = '';
-                break;
             }
+            break;
           case ',':
             if (!$sEmail) {
                 while (count($aStack) && !$sEmail) {

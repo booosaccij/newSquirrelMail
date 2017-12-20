@@ -543,8 +543,8 @@ class Rfc822Header {
                     $aAddress[] = $this->createAddressObject($aStack,$aComment,$sEmail,$sGroup);
                     $sGroup = '';
                     $aStack = $aComment = array();
-                    break;
                 }
+                break;
             case ',':
                 $aAddress[] = $this->createAddressObject($aStack,$aComment,$sEmail,$sGroup);
                 break;

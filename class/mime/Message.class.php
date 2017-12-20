@@ -394,6 +394,7 @@ class Message {
                                 ++$i;
                                 $arg_a[]= $msg->parseLanguage($read, $i);
                             }
+                            break;
                         case 7:
                             if (($arg_a[0] == 'message') && ($arg_a[1] == 'rfc822')) {
                                 $msg->header->type0 = $arg_a[0];
