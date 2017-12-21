@@ -334,6 +334,7 @@ class Rfc822Header {
     function getAddressTokens($address) {
         $aTokens = array();
         $aAddress = array();
+        print_r($aAddress);
         $aSpecials = array('(' ,'<' ,',' ,';' ,':');
         $aReplace =  array(' (',' <',' ,',' ;',' :');
         $address = str_replace($aSpecials,$aReplace,$address);
@@ -520,6 +521,7 @@ class Rfc822Header {
     function parseAddress($address,$ar=false,$aAddress=array(),$sGroup='',$sHost='',$lookup=false) {
         $aTokens = $this->getAddressTokens($address);
         $sPersonal = $sEmail = $sComment = $sGroup = '';
+        echo $sPersonal;
         $aStack = $aComment = array();
         foreach ($aTokens as $sToken) {
             $cChar = $sToken{0};
@@ -703,6 +705,7 @@ class Rfc822Header {
             $charset = substr($value,0,strpos($value,"'"));
             $value = substr($value,strlen($charset)+1);
             $language = substr($value,0,strpos($value,"'"));
+            echo $language;
             $value = substr($value,strlen($charset)+1);
             /* FIXME: What's the status of charset decode with language information ????
              * Maybe language information contains only ascii text and charset_decode() 
@@ -932,6 +935,7 @@ class Rfc822Header {
             foreach($address as $argument) {
                 $match = $this->findAddress($argument, true);
                 $last = end($match);
+                echo $last;
                 if ($match[1]) {
                     return $i;
                 } else {

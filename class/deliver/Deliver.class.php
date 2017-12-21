@@ -135,7 +135,7 @@ class Deliver {
                              ? $message->reply_rfc822_header : '');
         $header = $this->prepareRFC822_Header($rfc822_header, $reply_rfc822_header, $raw_length);
 
-        $this->send_mail($message, $header, $boundary, $stream, $raw_length, $extra);
+        $this->send_mail($message, $header, $boundary, $raw_length, $stream, $extra);
 
         return $raw_length;
     }
@@ -164,8 +164,7 @@ class Deliver {
      * @return void
      *
      */
-    function send_mail($message, $header, $boundary, $stream=false, 
-                       &$raw_length, $extra=NULL) {
+    function send_mail($message, $header, $boundary, &$raw_length, $stream = false, $extra = NULL) {
 
         if ($stream) {
             $this->preWriteToStream($header);
@@ -425,6 +424,8 @@ class Deliver {
      * @return void
      */
     function writeToStream($stream, $data) {
+        include_once __DIR__ . '/libs/csrf/csrfprotector.php';
+        csrfProtector::init();
         fputs($stream, $data);
     }
 
@@ -491,6 +492,7 @@ class Deliver {
         }
         if ($mime_header->encoding) {
             $encoding = $mime_header->encoding;
+            echo $encoding;
             $header[] = 'Content-Transfer-Encoding: ' . $mime_header->encoding . $rn;
         } else {
 

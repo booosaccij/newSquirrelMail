@@ -440,6 +440,7 @@ function sqsession_destroy() {
     $sessid = session_id();
     if (!empty( $sessid )) {
         $_SESSION = array();
+        print_r($_SESSION);
         error_reporting(0);
         session_destroy();
     }

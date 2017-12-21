@@ -98,7 +98,8 @@ class Message {
     var $is_deleted = 0;
     /**
      * Message \flagged status
-     * @var boolean
+
+     *      * @var boolean
      */
     var $is_flagged = 0;
     /**
@@ -347,6 +348,7 @@ class Message {
         $arg_a  = array();
         if ($sub_msg) {
             $message = $sub_msg;
+            echo $message;
         } else {
             $message = new Message();
         }
@@ -706,6 +708,7 @@ class Message {
                 $s = '';
                 $bEscaped = false;
                 $k = 0;
+                echo $k;
                  for ($j=$iPosStart,$iCnt=strlen($read);$j<$iCnt;++$j) {
                     $cChar = $read{$j};
                     switch ($cChar) {
@@ -909,6 +912,7 @@ class Message {
                         array_pop($boundaries);
                         $mime_header = true;
                         $bnd_end = true;
+                        echo bnd_end;
                     } else {
                         $mime_header = true;
                          $bnd_end = false;

@@ -109,7 +109,7 @@ class abook_database extends addressbook_backend {
             if (empty($param['dsn']) ||
                 empty($param['table']) ||
                 empty($param['owner'])) {
-                throw new MyException("Parameter cannot be null");
+                throw new NullParException("Parameter cannot be null");
             }
 
             $this->dsn   = $param['dsn'];
@@ -131,13 +131,21 @@ class abook_database extends addressbook_backend {
             $this->open(true);
         }
         else {
-            throw new MyException('Invalid argument to constructor');
+            throw new InvalidArgException('Invalid argument to constructor');
         }
         }
     
-        catch (MyException $e) {
+        catch (InvalidArgException $e) {
             echo "Exception ".": ".$e->getMessage();
         }
+        
+        catch (NullParException $e) {
+            echo "Exception ".": ".$e->getMessage();
+        }
+        
+    }
+        
+    
 
     /**
      * Open the database.
@@ -496,7 +504,7 @@ class abook_database extends addressbook_backend {
         }
         return true;
     }
-} /* End of class abook_database */
+ /* End of class abook_database */
 
 // vim: et ts=4
 }
